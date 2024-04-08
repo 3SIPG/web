@@ -1,5 +1,5 @@
 ### Tasks
-- [ x ] Architecture
-- [ x ] Routing
+- [x] Architecture
+- [x] Routing
 - [ ] Starting pagination
 - [ ] Styling
