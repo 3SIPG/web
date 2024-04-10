@@ -1,21 +1,11 @@
 import {
     Bird,
-    Book,
     Bot,
-    Code2,
     CornerDownLeft,
-    Globe,
+    GraduationCap,
     Home,
-    LifeBuoy,
-    Mic,
-    Paperclip,
     Rabbit,
     Settings,
-    Settings2,
-    Share,
-    SquareTerminal,
-    SquareUser,
-    Triangle,
     Turtle,
     Video,
   } from "lucide-react"
@@ -105,6 +95,23 @@ import {
                 </TooltipTrigger>
                 <TooltipContent>
                     <p>Chat</p>
+                </TooltipContent>
+            </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+            <Tooltip>
+                <TooltipTrigger asChild>
+          <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-lg bg-transparent"
+                aria-label="Playground"
+              >
+                <GraduationCap className="size-5" />
+              </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                    <p>Treinamento</p>
                 </TooltipContent>
             </Tooltip>
             </TooltipProvider>
@@ -258,7 +265,7 @@ import {
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
-                                <span className="font-medium text-foreground">
+                                <span className="font-medium text-euro-blue-400">
                                   Genesis
                                 </span>
                               </p>
@@ -274,7 +281,7 @@ import {
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
-                                <span className="font-medium text-foreground">
+                                <span className="font-medium text-euro-blue-400">
                                   Explorer
                                 </span>
                               </p>
@@ -290,7 +297,7 @@ import {
                             <div className="grid gap-0.5">
                               <p>
                                 Neural{" "}
-                                <span className="font-medium text-foreground">
+                                <span className="font-medium text-euro-blue-400">
                                   Quantum
                                 </span>
                               </p>
@@ -323,7 +330,7 @@ import {
                   className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
                 />
                 <div className="flex items-center p-3 pt-0">
-                  <Button type="submit" size="sm" className="ml-auto gap-1.5">
+                  <Button type="submit" size="sm" className="ml-auto gap-1.5 bg-euro-blue-500 hover:bg-euro-blue-400">
                     Send Message
                     <CornerDownLeft className="size-3.5" />
                   </Button>
