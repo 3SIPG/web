@@ -1,13 +1,14 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Folder, User } from "lucide-react";
+import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness } from "lucide-react";
 
  export default function Onboarding() {
    return (
-     <div>
+     <div className="overflow-x-hidden">
        <aside className="inset-y fixed w-[20rem] left-0 z-20 flex h-full flex-col border-r">
          <div className="text-left border-b-[1px] flex flex-col justify-center p-4 gap-[.75rem]">
-            <h1>Treinamento de novos funcionarios</h1>
+            <h1 className="font-bold text-md">Treinamento de novos funcionarios</h1>
             <div className="flex flex-row gap-[1rem] justify-center items-center">
             <Progress value={76}/>
             <p>76%</p>
@@ -46,7 +47,40 @@ import { Folder, User } from "lucide-react";
             </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-            <AccordionTrigger>Teste</AccordionTrigger>
+            <AccordionTrigger>
+            <div className="flex flex-row justify-center gap-[2rem] items-center">
+               <Landmark/>
+               <h1>Sobre a empresa</h1>
+               </div>
+            </AccordionTrigger>
+            <AccordionContent>
+            <ul className="flex gap-2 flex-col">
+                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 1</li>
+                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 2</li>
+                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 3</li>
+               </ul>
+            </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4">
+            <AccordionTrigger><div className="flex flex-row justify-center gap-[2rem] items-center">
+               <Wallet/>
+               <h1>Beneficios</h1>
+               </div>
+               </AccordionTrigger>
+            <AccordionContent>
+            <ul className="flex gap-2 flex-col">
+                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 1 - VR & VA</li>
+                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 2 - VT</li>
+                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 3 - Férias e outros!</li>
+               </ul>
+            </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-5">
+            <AccordionTrigger><div className="flex flex-row justify-center gap-[2rem] items-center">
+               <BriefcaseBusiness/>
+               <h1>Sobre o seu cargo</h1>
+               </div>
+               </AccordionTrigger>
             <AccordionContent>
             <ul className="flex gap-2 flex-col">
                   <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 1</li>
@@ -58,6 +92,19 @@ import { Folder, User } from "lucide-react";
          </Accordion>
           </nav>
         </aside>
+        <div>
+        <div className="flex ml-[20rem] p-[2rem] w-full border-b font-bold text-lg">
+         <h1>Vídeo 1 - LGPD - Conceitos</h1>
+        </div>
+        <div className="flex ml-[20rem] overflow-y-hidden">
+         <iframe src="http://www.youtube.com/embed/1xLE0zVkeFE"  width={1600} height={720}></iframe>
+        </div>
+        <nav className="flex justify-end p-4 ml-[20rem]">
+         <Button className="bg-euro-blue-400 hover:bg-euro-blue-200">Next Video
+         <ArrowRight />
+         </Button>
+        </nav>
+        </div>
      </div>
    )
  }
