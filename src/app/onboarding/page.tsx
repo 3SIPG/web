@@ -1,7 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness } from "lucide-react";
+import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness, CheckCheck } from "lucide-react";
 
  export default function Onboarding() {
    return (
@@ -25,9 +25,9 @@ import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness } from "l
             </AccordionTrigger>
             <AccordionContent>
                <ul className="flex gap-2 flex-col">
-                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 1</li>
-                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 2</li>
-                  <li className="cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 3</li>
+                  <li className="flex flex-row items-center gap-3 cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 1 <CheckCheck color="#2397b6"/></li>
+                  <li className="flex flex-row items-center gap-3 cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 2 <CheckCheck color="#2397b6"/></li>
+                  <li className="flex flex-row items-center gap-3 cursor-pointer hover:border-b-euro-blue-500 hover:border-b p-1">Video 3 <CheckCheck color="#2397b6"/></li>
                </ul>
             </AccordionContent>
             </AccordionItem>
