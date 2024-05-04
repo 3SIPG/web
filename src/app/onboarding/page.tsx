@@ -1,7 +1,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness } from "lucide-react";
+import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
  export default function Onboarding() {
    return (
@@ -90,6 +91,9 @@ import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness } from "l
             </AccordionContent>
             </AccordionItem>
          </Accordion>
+         <Link href="/portal" className="mt-[16.5rem] flex flex-row gap-2 cursor-pointer">
+            <ArrowLeft/> Portal
+         </Link>
           </nav>
         </aside>
         <div>
@@ -100,7 +104,7 @@ import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness } from "l
          <iframe src="http://www.youtube.com/embed/1xLE0zVkeFE"  width={1600} height={720}></iframe>
         </div>
         <nav className="flex justify-end p-4 ml-[20rem]">
-         <Button className="bg-euro-blue-400 hover:bg-euro-blue-200">Next Video
+         <Button className="bg-euro-blue-400 hover:bg-euro-blue-200">Próximo vídeo
          <ArrowRight />
          </Button>
         </nav>
