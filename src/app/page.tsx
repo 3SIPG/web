@@ -1,9 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import test from '@/app/assets/test.png';
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import mainImage from '@/app/assets/login-photo.png';
 import { UserAuthForm } from "./components/user-auth-form";
 export const metadata: Metadata = {
   title: "Login Page | Eurofarma",
@@ -15,9 +12,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
   <main className="font-ubuntu w-[100vw] h-[100vh] flex justify-center items-center">
-    <section className="border rounded-lg w-[104rem] h-[48rem] flex flex-row">
+    <section className="border rounded-lg w-[104rem] h-[48rem] flex flex-row md:w-[72rem] md:h-[40rem]">
       <div className="bg-euro-primary-300 w-[50%] border-y-euro-primary-300 rounded-s-lg flex justify-center flex-col items-center">
-       <Image src={test} alt={""} width={300} height={300}/>
+       <Image src={mainImage} alt={""} width={348} height={348}/>
        <p className="text-white font-space-grotesk leading-snug p-4 text-center w-[24rem]">
        Fazemos parte da sua família há mais de 50 anos, movidos pela busca incessante de tornar a saúde acessível para que todos possam viver melhor.
        </p>
