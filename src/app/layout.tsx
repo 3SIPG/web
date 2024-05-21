@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Ubuntu } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
+export const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: '--font-ubuntu'
+})
+export const space_grotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500","600","700"],
+  variable: '--font-space-grotesk'
+})
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,10 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        
-      </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${ubuntu.variable} ${space_grotesk.variable}`}>{children}</body>
     </html>
   );
 }
