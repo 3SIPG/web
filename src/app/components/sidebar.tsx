@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { BotMessageSquare, Brain, Clapperboard, Eye, Home, LogOut, LucideIcon, Menu, Settings, User, X } from 'lucide-react';
+import { BotMessageSquare, Brain, Clapperboard, Home, LogOut, LucideIcon, Menu, User, X } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 interface Option {
     icon: LucideIcon;
@@ -39,7 +39,7 @@ export default function Sidebar() {
     };
 
     return (
-        <div className={`h-screen bg-primary-euro-300 p-4 flex flex-col justify-between ${isMinimized ? 'w-16 items-center' : 'w-64'}`}>
+        <div className={`h-screen bg-euro-primary-300 p-4 flex flex-col justify-between ${isMinimized ? 'w-16 items-center' : 'w-64'}`}>
         <div>
             <div className="flex justify-between items-center mb-4">
                 {!isMinimized && <span className="text-gray-300 text-lg font-bold">Menu</span>}
