@@ -1,7 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-
 import { Folder, User, ArrowRight, Landmark, Wallet, BriefcaseBusiness, CheckCheck, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
