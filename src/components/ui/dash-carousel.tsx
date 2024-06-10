@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -5,8 +6,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel"
 import Link from "next/link"
+import Autoplay from "embla-carousel-autoplay"
 
 export function DashCarousel() {
 
@@ -21,11 +25,40 @@ const items: DashProps[] = [
     title: "Onboarding",
     description: "Our new on boarding",
     link: "/",
-   }
+   },
+   {
+    title: "Onboarding",
+    description: "Our new on boarding",
+    link: "/",
+   },
+   {
+    title: "On",
+    description: "Our new on boarding",
+    link: "/",
+   },
+   {
+    title: "Onboarding",
+    description: "Our new on boarding",
+    link: "/",
+   },
+   {
+    title: "Onboarding",
+    description: "Our new on boarding",
+    link: "/",
+   },
 ]
 
+const plugin = React.useRef(
+  Autoplay({ delay: 2000, stopOnInteraction: true })
+)
+
   return (
-    <Carousel className="w-full max-w-xs">
+    <Carousel 
+    className="w-full max-w-xs"
+    plugins={[plugin.current]}
+    onMouseEnter={plugin.current.stop}
+    onMouseLeave={plugin.current.reset}
+    >
       <CarouselContent>
         {items.map((item, index) => (
           <CarouselItem key={index}>
@@ -45,6 +78,8 @@ const items: DashProps[] = [
           </CarouselItem>
         ))}
       </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
     </Carousel>
   )
 }
