@@ -5,7 +5,7 @@ import {
   import { Button } from "@/components/ui/button"
   import { Label } from "@/components/ui/label"
   import { Textarea } from "@/components/ui/textarea"
-  import SideBarChat from "../components/sidebar-chat"
+  import SideBarChat from "@/components/ui/sidebar"
   
   export default function Chat() {
     return (
