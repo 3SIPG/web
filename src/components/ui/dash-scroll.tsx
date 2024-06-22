@@ -77,7 +77,7 @@ export function DashScroll() {
             <figcaption className="pt-2 text-xs text-muted-foreground">
               Vídeo sobre{" "}
               <span className="font-semibold text-foreground">
-                {artwork.thumbnail}
+                {artwork.category}
               </span>
             </figcaption>
           </figure>
