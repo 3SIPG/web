@@ -64,7 +64,7 @@ export function DashScroll() {
     <ScrollArea className="w-[80rem] whitespace-nowrap rounded-md border">
       <div className="flex w-max space-x-4 p-4">
         {works.map((artwork) => (
-          <figure key={artwork.artist} className="shrink-0">
+          <figure className="shrink-0">
             <div className="overflow-hidden rounded-md">
               <Image
                 src={artwork.art}
