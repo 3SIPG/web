@@ -2,31 +2,38 @@
 import React, { useState } from 'react';
 import { BotMessageSquare, Brain, Clapperboard, Home, LogOut, LucideIcon, Menu, User, X } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import Link from 'next/link';
 interface Option {
     icon: LucideIcon;
     title: string;
+    link: string;
 }
 
 const options: Option[] = [
     {
         icon: Home,
-        title: "Portal" 
+        title: "Portal",
+        link: "/" 
     },
     {
         icon: BotMessageSquare,
-        title: "Chatbot"
+        title: "Chatbot",
+        link: "/chatbot"
      },
     {
         icon: Brain,
-        title: "IA" 
+        title: "IA",
+        link: "/ia" 
     },
     {
         icon: Clapperboard,
-        title: "Onboarding" 
+        title: "Onboarding",
+        link: "/onboarding"
     },
     {
         icon: User,
-        title: "Presença" 
+        title: "Presença",
+        link: "" 
     }
 ];
 
@@ -49,7 +56,7 @@ export default function Sidebar() {
             </div>
             <div className="flex flex-col items-center gap-4">
                 {options.map((option, index) => (
-                    <div key={index} className={`flex items-center p-2 text-gray-300 hover:bg-primary-euro-400 cursor-pointer w-full ${isMinimized ? 'justify-center' : ''}`}>
+                    <Link href={option.link.toString()} key={index} className={`flex items-center p-2 text-gray-300 hover:bg-primary-euro-400 cursor-pointer w-full ${isMinimized ? 'justify-center' : ''}`}>
                          <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
@@ -61,7 +68,7 @@ export default function Sidebar() {
                         </Tooltip>
                       </TooltipProvider>
                         {!isMinimized &&  <span className="ml-4">{option.title}</span>}
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
