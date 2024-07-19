@@ -64,7 +64,7 @@ const plugin = React.useRef(
           <CarouselItem key={index}>
             <div className="p-1">
               <Card>
-                <CardContent className="flex flex-col aspect-square items-center justify-center p-6">
+                <CardContent className="flex flex-col aspect-auto h-[15rem] items-center justify-center p-6">
                   <span className="text-4xl font-semibold">{item.title}</span>
                   <p className="mt-2">{item.description}.</p>
                   <Link href={item.link.toString()}>

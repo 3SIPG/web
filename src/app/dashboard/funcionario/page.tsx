@@ -9,7 +9,7 @@ export default function Aluno() {
         <Sidebar/>
         </div>
         <div className="flex-1">
-        <div className="flex justify-center p-4">
+        <div className="flex justify-center p-4 mr-[10rem]">
         <DashCarousel/>
         </div>
         <div className="w-full p-2 ml-6">
