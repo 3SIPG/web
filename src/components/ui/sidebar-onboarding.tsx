@@ -10,6 +10,16 @@ interface Option {
     link: string;
 }
 
+
+interface Video { 
+    title: string;
+}
+
+const videos: Video[] = [
+    {title: 'Video1'},
+    {title: 'Video2'}
+]
+
 const options: Option[] = [
     {
         icon: Home,
@@ -55,6 +65,14 @@ export default function SidebarOnboarding() {
                     {isMinimized ? <Menu className="w-6 h-6"/> : <X className="w-6 h-6"/>}
                 </button>
             </div>
+            
+        </div>
+        <div className="flex flex-col items-center gap-4">
+             {videos.map((video, index) => (
+                  <div key={index}>
+                    <span>{video.title}</span>
+                  </div> 
+             ))}
         </div>
         <div className={`flex flex-col gap-4 items-left p-2 text-gray-300 hover:bg-primary-euro-400 cursor-pointer ${isMinimized ? 'justify-center' : ''}`}>
             <DropdownMenu>
