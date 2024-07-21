@@ -4,6 +4,8 @@ import { BotMessageSquare, Brain, Clapperboard, Cog, Home, LogOut, LucideIcon, M
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import Link from 'next/link';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import SelectOnboarding from './select-onboarding';
 interface Option {
     icon: LucideIcon;
     title: string;
@@ -11,14 +13,6 @@ interface Option {
 }
 
 
-interface Video { 
-    title: string;
-}
-
-const videos: Video[] = [
-    {title: 'Video1'},
-    {title: 'Video2'}
-]
 
 const options: Option[] = [
     {
@@ -51,7 +45,6 @@ const options: Option[] = [
 export default function SidebarOnboarding() {
 
     const [isMinimized, setIsMinimized] = useState(true);
-
     const toggleSidebar = () => {
         setIsMinimized(!isMinimized);
     };
@@ -68,11 +61,9 @@ export default function SidebarOnboarding() {
             
         </div>
         <div className="flex flex-col items-center gap-4">
-             {videos.map((video, index) => (
-                  <div key={index}>
-                    <span>{video.title}</span>
-                  </div> 
-             ))}
+            {!isMinimized && (
+            <SelectOnboarding/>
+            )}
         </div>
         <div className={`flex flex-col gap-4 items-left p-2 text-gray-300 hover:bg-primary-euro-400 cursor-pointer ${isMinimized ? 'justify-center' : ''}`}>
             <DropdownMenu>
