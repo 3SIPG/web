@@ -1,11 +1,16 @@
+"use client";
+
 import axios from "axios";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useEffect, useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import { ScrollArea, ScrollBar } from "./scroll-area";
 
 interface Category {
   id: string;
   title: string;
-  videos: Array<{ id: string, title: string, url: string }>;
+  videos: Array<{ id: string, title: string, url: string, banner: string }>;
 }
 
 async function getCategory() {
@@ -19,6 +24,7 @@ async function getCategory() {
 }
 
 export default function SelectOnboarding() {
+  const [isVisible, setIsVisible] = useState(true);
   const [category, setCategory] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
 
@@ -38,13 +44,14 @@ export default function SelectOnboarding() {
   const handleSelectChange = (value: string) => {
     const selected = category.find(cat => cat.id === value) || null;
     setSelectedCategory(selected);
+    setIsVisible(false)
   };
 
   return (
     <main>
       <div>
         <Select onValueChange={handleSelectChange}>
-          <SelectTrigger>
+          <SelectTrigger> 
             <SelectValue placeholder="Selecione uma categoria" />
           </SelectTrigger>
           <SelectContent>
@@ -59,13 +66,25 @@ export default function SelectOnboarding() {
         </Select>
       </div>
       <div>
-        <ul>
-          {selectedCategory?.videos.map((video) => (
-            <li key={video.id}>
-              <a href={video.url}>{video.title}</a>
-            </li>
-          ))}
-        </ul>
+        <ScrollArea className="w-[95vw] h-[90vh] rounded-md border mt-[.5rem] overflow-auto">
+        <div className="grid grid-cols-2 gap-2 w-[100vw] mt-[5rem]">
+          {isVisible ? (
+          <div className="ml-4 top-[20rem] left-[45rem] absolute">
+         <h1> Porfavor, selecione uma categoria para começar!</h1>
+          </div>
+          ) 
+         :
+        (
+          selectedCategory?.videos.map((video) => (
+            <div className="flex flex-col items-center justify-center text-center p-[2rem]">
+              <img width={360} height={360} src={video.banner} alt={video.title}/>
+              <h1>{video.title}</h1>
+            </div>
+          ))
+        ) 
+         }
+        </div>
+          </ScrollArea>
       </div>
     </main>
   );

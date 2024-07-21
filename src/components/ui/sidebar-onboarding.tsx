@@ -89,10 +89,6 @@ export default function SidebarOnboarding() {
                 ))}
             </DropdownMenuContent>
             </DropdownMenu>
-            <div className='flex flex-row'>
-            <LogOut className="w-6 h-6"/>
-            {!isMinimized && <span className="ml-4">Sair</span>}
-            </div>
         </div>
     </div>
     );
