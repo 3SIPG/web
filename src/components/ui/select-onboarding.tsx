@@ -3,9 +3,8 @@
 import axios from "axios";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useEffect, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
-import { ScrollArea, ScrollBar } from "./scroll-area";
+import { ScrollArea } from "./scroll-area";
+import Link from "next/link";
 
 interface Category {
   id: string;
@@ -70,18 +69,20 @@ export default function SelectOnboarding() {
         <div className="grid grid-cols-2 gap-2 w-[100vw] mt-[5rem]">
           {isVisible ? (
           <div className="ml-4 top-[20rem] left-[45rem] absolute">
-         <h1> Porfavor, selecione uma categoria para começar!</h1>
+          <h1> Porfavor, selecione uma categoria para começar!</h1>
           </div>
           ) 
          :
         (
           selectedCategory?.videos.map((video) => (
             <div className="flex flex-col items-center justify-center text-center p-[2rem]">
-              <img width={360} height={360} src={video.banner} alt={video.title}/>
+              <Link href={`http://localhost:3000/onboarding/${selectedCategory.id}/${video.id}`}>
+              <img className="cursor-pointer" width={360} height={360} src={video.banner} alt={video.id}/>
               <h1>{video.title}</h1>
+              </Link>
             </div>
           ))
-        ) 
+        )
          }
         </div>
           </ScrollArea>

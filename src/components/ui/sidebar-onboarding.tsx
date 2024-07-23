@@ -18,7 +18,7 @@ const options: Option[] = [
     {
         icon: Home,
         title: "Portal",
-        link: "/" 
+        link: "/dashboard/funcionario" 
     },
     {
         icon: BotMessageSquare,
