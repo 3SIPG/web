@@ -14,7 +14,7 @@ export default function Aluno() {
         </div>
         <div className="w-full p-2 ml-6">
         <h1 className="text-[24px] text-euro-text-400">
-            Recent videos
+        Recent videos
         </h1>
         <DashScroll/>
         </div>
