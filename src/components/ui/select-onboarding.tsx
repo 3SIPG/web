@@ -65,10 +65,10 @@ export default function SelectOnboarding() {
         </Select>
       </div>
       <div>
-        <ScrollArea className="w-[95vw] h-[90vh] rounded-md border mt-[.5rem] overflow-auto">
+        <ScrollArea className="w-[93vw] h-[89vh] rounded-md border mt-[.5rem] overflow-auto">
         <div className="grid grid-cols-2 gap-2 w-[100vw] mt-[5rem]">
           {isVisible ? (
-          <div className="ml-4 top-[20rem] left-[45rem] absolute">
+          <div className="ml-4 top-[20rem] left-[30rem] absolute">
           <h1> Porfavor, selecione uma categoria para começar!</h1>
           </div>
           ) 
