@@ -84,10 +84,10 @@ export default function Ia() {
     }
     return (
     <div className='flex justify-center items-center ml-44'>
-    <Card className='grid grid-rows-[min-content_1fr_min-content] w-[80vw] h-[90vh] gap-2 flex-col p-5'>
+    <Card className='grid grid-rows-[min-content_1fr_min-content] w-[70vw] h-[80vh] gap-2 flex-col p-5'>
         <CardHeader>
         <CardDescription>
-           Some description.
+          Inteligência artificial da Eurofarma.
         </CardDescription>
         <Separator />
         </CardHeader>
@@ -99,7 +99,7 @@ export default function Ia() {
                     <div className="mt-[1.5rem]" key={message.id}>
                     {message.role === 'user' ? (
                         <div className="flex justify-end">
-                            <p className="text-center max-w-[70vw] font-sans rounded-3xl px-5 py-2.5 bg-zinc-700 border border-zinc-700">
+                            <p className="text-center max-w-[70vw] font-sans rounded-3xl px-5 py-2.5 bg-zinc-300 border border-zinc-300">
                                 {message.content}
                             </p>
                         </div>
