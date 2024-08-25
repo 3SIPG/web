@@ -47,7 +47,7 @@ export default function Navbar() {
                 <button onClick={toggleMenu} className="p-2 text-gray-300 hover:bg-primary-euro-400 rounded lg:hidden">
                     {isMenuOpen ? <X className="w-6 h-6"/> : <Menu className="w-6 h-6"/>}
                 </button>
-                <span className="text-gray-300 text-lg font-bold ml-4">Menu</span>
+                <span className="text-gray-300 text-lg font-bold ml-4">Eurofarma</span>
             </div>
             <div className={`flex-col lg:flex-row lg:flex items-center gap-4 absolute lg:relative top-full left-0 right-0 lg:top-auto bg-euro-primary-300 lg:bg-transparent ${isMenuOpen ? 'flex' : 'hidden'} lg:flex`}>
                 {options.map((option, index) => (
