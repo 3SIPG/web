@@ -1,5 +1,6 @@
+import { ScrollArea } from "@/components/ui/scroll-area";
 import SelectOnboarding from "@/components/ui/select-onboarding";
-import Sidebar from "@/components/ui/sidebar";
+import Navbar from "@/components/ui/navbar";
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Onboarding | Eurofarma",
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
  export default function Onboarding() {
    return (
       <main className="flex flex-row">
-      <Sidebar/>
-      <div className="p-4 w-[15rem]">
+      <Navbar/>
+      <div className="p-4 w-[100%]">
         <SelectOnboarding/>
       </div>
       </main>

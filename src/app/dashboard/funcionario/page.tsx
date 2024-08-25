@@ -1,6 +1,6 @@
 import { DashCarousel } from "@/components/ui/dash-carousel";
 import { DashScroll } from "@/components/ui/dash-scroll";
-import Sidebar from "@/components/ui/sidebar";
+import Navbar from "@/components/ui/navbar";
 import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Dashboard Funcionário | Eurofarma",
@@ -9,11 +9,12 @@ export const metadata: Metadata = {
       icon: "/icon.png",
     }
   };
+
 export default function Aluno() {
     return (
     <div className="flex">
         <div>
-        <Sidebar/>
+        <Navbar/>
         </div>
         <div className="flex-1">
         <div className="flex justify-center p-4 mr-[10rem]">
@@ -23,7 +24,7 @@ export default function Aluno() {
         <h1 className="text-[24px] text-euro-text-400">
         Recent videos
         </h1>
-        <DashScroll/>
+        {/* <DashScroll works={}/> */}
         </div>
         </div>
     </div>
