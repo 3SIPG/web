@@ -12,7 +12,9 @@ export default function IaPage() {
     return (
         <main className="flex flex-row">
         <Navbar/>
+        <div className="mt-[6rem]">
         <Ia/>
+        </div>
         </main>
     )
 }
