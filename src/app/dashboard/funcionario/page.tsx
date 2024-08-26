@@ -20,7 +20,7 @@ export default function Aluno() {
     <div className="flex">
 
       <div>
-        <Sidebar />
+        <Navbar />
       </div>
 
       <div className="flex-1 overflow-x-hidden">
