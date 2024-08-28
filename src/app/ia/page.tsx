@@ -1,5 +1,5 @@
 import Ia from "@/components/ui/ia";
-import Sidebar from "@/components/ui/sidebar";
+import Navbar from "@/components/ui/navbar";
 import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "IA | Eurofarma",
@@ -10,9 +10,11 @@ export const metadata: Metadata = {
   };
 export default function IaPage() {
     return (
-        <main className="flex flex-row">
-        <Sidebar/>
+        <main className="flex flex-col">
+        <Navbar/>
+        <div className="mt-[6rem]">
         <Ia/>
+        </div>
         </main>
     )
 }

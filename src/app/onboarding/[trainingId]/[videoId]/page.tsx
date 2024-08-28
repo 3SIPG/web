@@ -2,7 +2,7 @@ import { getVideoId } from "@/app/services/get-video-id"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import NextButton from "@/components/ui/next-button"
 import PrevButton from "@/components/ui/prev-button"
-import Sidebar from "@/components/ui/sidebar"
+import Navbar from "@/components/ui/navbar"
 
 
 export default async function videoId({ params } : { params: { videoId : string, trainingId: string }}) {
@@ -11,7 +11,7 @@ export default async function videoId({ params } : { params: { videoId : string,
     return (
         <main className="flex flex-row gap-4">
             <div>
-            <Sidebar/>
+            <Navbar/>
             </div>
             <div className="absolute left-[36rem] top-[5rem]">
             <Breadcrumb>
@@ -24,7 +24,7 @@ export default async function videoId({ params } : { params: { videoId : string,
             </BreadcrumbList>
             </Breadcrumb>
             <h1>{video.title}</h1>
-            <img src={video.banner} width={360} height={360} alt="" />
+            <iframe src={video.url} width={360} height={360} />
             <PrevButton params={{
                     videoId: params.videoId,
                     trainingId: params.trainingId
