@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   };
 export default function IaPage() {
     return (
-        <main className="flex flex-row">
+        <main className="flex flex-col">
         <Navbar/>
         <div className="mt-[6rem]">
         <Ia/>
