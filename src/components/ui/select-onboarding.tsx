@@ -44,7 +44,7 @@ export default function Onboarding() {
         <div className="text-center">Loading...</div>
       ) : (
         categories.map((category) => (
-          <div key={category.id} className="mb-6">
+          <div key={category.id} className="mb-6 mt-[2rem]">
             <h2 className="text-lg font-bold mb-2">{category.title}</h2>
             <DashScroll works={category.videos} />
           </div>
