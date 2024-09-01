@@ -26,34 +26,15 @@ const config = {
 
 export default function Ia() {
     
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [inputQuestion, setInputQuestion] = useState<string>(''); // Removi o | null aqui
   
     const [messages, setMessages] = useState<Message[]>([]);
-  
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
-      setSelectedFile(file || null);
-    };
   
     const handleQuestionChange = (event: ChangeEvent<HTMLInputElement>) => {
       const question = event.target.value;
       setInputQuestion(question);
     };
   
-    async function getPDFFile() {
-      if (!selectedFile?.name) return;
-      try {
-        const form = new FormData();
-        form.append('pdf', selectedFile);
-        setSelectedFile(null)
-        await axios.post(`${apiUrl}/load`, form);
-        location.reload()
-      } catch (error) {
-        console.error('Error fetching users:', error);
-        throw error;
-      }
-    }
   
     const AddMessage = (role: string, content: string) => {
       const newMessage: Message = {
