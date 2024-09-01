@@ -12,7 +12,7 @@ interface Option {
 const options: Option[] = [
     {
         title: "Portal",
-        link: "/" 
+        link: "/dashboard/funcionario" 
     },
     {
         title: "Chatbot",
@@ -33,7 +33,6 @@ const options: Option[] = [
 ];
 
 export default function Navbar() {
-    const [isMinimized, setIsMinimized] = useState(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
