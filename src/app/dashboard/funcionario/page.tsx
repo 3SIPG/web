@@ -1,6 +1,6 @@
 import { DashCarousel } from "@/components/ui/dash-carousel";
 import { DashScroll } from "@/components/ui/dash-scroll";
-import Sidebar from "@/components/ui/sidebar";
+import Navbar from "@/components/ui/navbar";
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Dashboard Funcionário | Eurofarma",
