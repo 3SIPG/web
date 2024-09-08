@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { DashScroll } from "./dash-scroll"; // Import DashScroll component
+import { OnboardingScroll } from "./onboarding-scroll";
 
 interface Video {
   id: string;
@@ -46,7 +46,7 @@ export default function Onboarding() {
         categories.map((category) => (
           <div key={category.id} className="mb-6 mt-[2rem]">
             <h2 className="text-lg font-bold mb-2">{category.title}</h2>
-            <DashScroll works={category.videos} />
+            <OnboardingScroll works={category.videos} selectedCategoryId={category.id} />
           </div>
         ))
       )}
