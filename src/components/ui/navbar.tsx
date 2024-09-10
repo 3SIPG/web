@@ -26,10 +26,6 @@ const options: Option[] = [
         title: "Onboarding",
         link: "/onboarding"
     },
-    {
-        title: "Presença",
-        link: "" 
-    }
 ];
 
 export default function Navbar() {
