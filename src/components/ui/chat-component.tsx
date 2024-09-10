@@ -29,6 +29,12 @@ export default function ChatComponent() {
             addMessageToHistory('assistant', 'Quantas pessoas participarão do evento?');
         } else if (option === 0) {
             addMessageToHistory('assistant', 'Operação cancelada.');
+            setChatHistory([]);
+            setEventDetails({
+                type: '',
+                numberOfPeople: '',
+                hasGifts: false,
+            });
         }
     };
 
