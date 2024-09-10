@@ -11,6 +11,7 @@ export default function ChatComponent() {
         hasGifts: false,
     });
     const [chatHistory, setChatHistory] = useState<Array<{ role: 'assistant' | 'user'; message: string }>>([]);
+    const [assistantMessage, setAssistantMessage] = useState('');
 
     // Adiciona uma mensagem ao histórico, evitando duplicações
     const addMessageToHistory = (role: 'assistant' | 'user', message: string) => {
@@ -23,10 +24,28 @@ export default function ChatComponent() {
         });
     };
 
+    useEffect(() => {
+        if (step === 0 && chatHistory.length === 0) {
+            setAssistantMessage('Olá! Eu sou o seu assistente. O que você gostaria de fazer?');
+        } else if (step === 1) {
+            setAssistantMessage('Quantas pessoas participarão do evento?');
+        } else if (step === 2) {
+            setAssistantMessage('Haverá brindes no evento?');
+        } else if (step === 3) {
+            setAssistantMessage('Resumo do Evento:');
+        }
+    }, [step]);
+
+    useEffect(() => {
+        if (assistantMessage) {
+            addMessageToHistory('assistant', assistantMessage);
+            setAssistantMessage(''); // Clear the message after adding it
+        }
+    }, [assistantMessage]);
+
     const handleOptionClick = (option: SetStateAction<number>) => {
-        setStep(option);
         if (option === 1) {
-            addMessageToHistory('assistant', 'Quantas pessoas participarão do evento?');
+            setStep(option);
         } else if (option === 0) {
             addMessageToHistory('assistant', 'Operação cancelada.');
             setChatHistory([]);
@@ -35,6 +54,7 @@ export default function ChatComponent() {
                 numberOfPeople: '',
                 hasGifts: false,
             });
+            setStep(option);
         }
     };
 
@@ -44,7 +64,6 @@ export default function ChatComponent() {
             numberOfPeople: number,
         }));
         addMessageToHistory('user', `Número de Pessoas: ${number}`);
-        addMessageToHistory('assistant', 'Haverá brindes no evento?');
         setStep(2); // Avançar para a próxima pergunta
     };
 
@@ -54,7 +73,6 @@ export default function ChatComponent() {
             hasGifts,
         }));
         addMessageToHistory('user', `Brindes: ${hasGifts ? 'Sim' : 'Não'}`);
-        addMessageToHistory('assistant', 'Resumo do Evento:');
         setStep(3); // Avançar para a próxima etapa
     };
 
@@ -71,13 +89,6 @@ export default function ChatComponent() {
         });
         setStep(0);
     };
-
-    // UseEffect para inicializar a primeira mensagem quando o componente monta
-    useEffect(() => {
-        if (step === 0 && chatHistory.length === 0) {
-            addMessageToHistory('assistant', 'Olá! Eu sou o seu assistente. O que você gostaria de fazer?');
-        }
-    }, [step, chatHistory]);
 
     return (
         <Card>
@@ -103,77 +114,58 @@ export default function ChatComponent() {
 
                         {/* Perguntas e respostas */}
                         {step === 0 && (
-                            <>
-                                <div className="flex items-start space-x-4">
-                                    {/* A primeira pergunta será mostrada diretamente */}
-                                </div>
-                                <div className="flex space-x-2 mt-2">
-                                    <Button
-                                        onClick={() => {
-                                            addMessageToHistory('user', 'Planejar um evento');
-                                            handleOptionClick(1);
-                                        }}
-                                    >
-                                        Planejar um evento
-                                    </Button>
-                                    <Button
-                                        onClick={() => {
-                                            addMessageToHistory('user', 'Cancelar');
-                                            handleOptionClick(0);
-                                        }}
-                                    >
-                                        Cancelar
-                                    </Button>
-                                </div>
-                            </>
+                            <div className="flex space-x-2 mt-2">
+                                <Button
+                                    onClick={() => {
+                                        addMessageToHistory('user', 'Planejar um evento');
+                                        handleOptionClick(1);
+                                    }}
+                                >
+                                    Planejar um evento
+                                </Button>
+                                <Button
+                                    onClick={() => {
+                                        addMessageToHistory('user', 'Cancelar');
+                                        handleOptionClick(0);
+                                    }}
+                                >
+                                    Cancelar
+                                </Button>
+                            </div>
                         )}
                         {step === 1 && (
-                            <>
-                                <div className="flex items-start space-x-4">
-                                    <div className="bg-blue-100 text-blue-800 p-3 rounded-lg max-w-md">
-                                        <p>Quantas pessoas participarão do evento?</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center space-x-2 mt-2">
-                                    <Button onClick={() => handleNumberOfPeopleClick('80')}>80</Button>
-                                    <Button onClick={() => handleNumberOfPeopleClick('160')}>160</Button>
-                                    <Button onClick={() => handleNumberOfPeopleClick('240+')}>240+</Button>
-                                </div>
-                            </>
+                            <div className="flex items-center space-x-2 mt-2">
+                                <Button onClick={() => handleNumberOfPeopleClick('80')}>80</Button>
+                                <Button onClick={() => handleNumberOfPeopleClick('160')}>160</Button>
+                                <Button onClick={() => handleNumberOfPeopleClick('240+')}>240+</Button>
+                            </div>
                         )}
                         {step === 2 && (
-                            <>
-                                <div className="flex items-start space-x-4">
-                                    <div className="bg-blue-100 text-blue-800 p-3 rounded-lg max-w-md">
-                                        <p>Haverá brindes no evento?</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center space-x-2 mt-2">
-                                    <Button onClick={() => handleGiftsClick(true)}>Sim</Button>
-                                    <Button onClick={() => handleGiftsClick(false)}>Não</Button>
-                                </div>
-                            </>
+                            <div className="flex items-center space-x-2 mt-2">
+                                <Button onClick={() => handleGiftsClick(true)}>Sim</Button>
+                                <Button onClick={() => handleGiftsClick(false)}>Não</Button>
+                            </div>
                         )}
                         {step === 3 && (
-                            <>
-                                <div className="flex items-start space-x-4">
-                                    <div className="bg-blue-100 text-blue-800 p-3 rounded-lg max-w-md">
-                                        <p>Resumo do Evento:</p>
-                                        <ul className="list-disc pl-5">
-                                            <li>Tipo de Evento: Planejamento</li>
-                                            <li>Número de Pessoas: {eventDetails.numberOfPeople}</li>
-                                            <li>Brindes: {eventDetails.hasGifts ? 'Sim' : 'Não'}</li>
-                                        </ul>
-                                        <p>Obrigado por fornecer as informações. Se precisar de mais ajuda, estou aqui!</p>
-                                    </div>
+                            <div className="flex items-start space-x-4">
+                                <div className="bg-blue-100 text-blue-800 p-3 rounded-lg max-w-md">
+                                    <p>Resumo do Evento:</p>
+                                    <ul className="list-disc pl-5">
+                                        <li>Tipo de Evento: Planejamento</li>
+                                        <li>Número de Pessoas: {eventDetails.numberOfPeople}</li>
+                                        <li>Brindes: {eventDetails.hasGifts ? 'Sim' : 'Não'}</li>
+                                    </ul>
+                                    <p>Obrigado por fornecer as informações. Se precisar de mais ajuda, estou aqui!</p>
                                 </div>
-                                <div className="flex space-x-2 mt-2">
-                                    <Button onClick={handleStartNewEvent}>Iniciar Novo Evento</Button>
-                                </div>
-                            </>
+                            </div>
                         )}
                     </div>
-                    {step > 0 && (
+                    {step === 3 && (
+                        <div className="flex space-x-2 mt-2">
+                            <Button onClick={handleStartNewEvent}>Iniciar Novo Evento</Button>
+                        </div>
+                    )}
+                     {step > 0 && (
                         <div className="flex justify-between items-center mt-2">
                             <Button onClick={handleBack}>Voltar</Button>
                         </div>
