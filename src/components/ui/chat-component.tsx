@@ -31,8 +31,6 @@ export default function ChatComponent() {
             setAssistantMessage('Quantas pessoas participarão do evento?');
         } else if (step === 2) {
             setAssistantMessage('Haverá brindes no evento?');
-        } else if (step === 3) {
-            setAssistantMessage('Resumo do Evento:');
         }
     }, [step]);
 
