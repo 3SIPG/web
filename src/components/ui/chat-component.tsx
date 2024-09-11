@@ -9,9 +9,28 @@ export default function ChatComponent() {
         type: '',
         numberOfPeople: '',
         hasGifts: false,
+        cost: 0, // Added cost field
     });
     const [chatHistory, setChatHistory] = useState<Array<{ role: 'assistant' | 'user'; message: string }>>([]);
     const [assistantMessage, setAssistantMessage] = useState('');
+
+    // Calculate cost based on the number of people and whether there are gifts
+    const calculateCost = (numberOfPeople: string, hasGifts: boolean) => {
+        const costPerPerson = 1000; // Cost per person
+        let giftCost = 0;
+
+        // Determine additional cost for gifts
+        if (numberOfPeople === '80') {
+            giftCost = 8000;
+        } else if (numberOfPeople === '160') {
+            giftCost = 16000;
+        } else if (numberOfPeople === '240+') {
+            giftCost = 24000;
+        }
+
+        const peopleCount = parseInt(numberOfPeople.replace(/[^0-9]/g, '')) || 0;
+        return peopleCount * costPerPerson + (hasGifts ? giftCost : 0);
+    };
 
     // Adiciona uma mensagem ao histórico, evitando duplicações
     const addMessageToHistory = (role: 'assistant' | 'user', message: string) => {
@@ -51,25 +70,34 @@ export default function ChatComponent() {
                 type: '',
                 numberOfPeople: '',
                 hasGifts: false,
+                cost: 0,
             });
             setStep(option);
         }
     };
 
     const handleNumberOfPeopleClick = (number: string) => {
-        setEventDetails((prev) => ({
-            ...prev,
-            numberOfPeople: number,
-        }));
+        setEventDetails((prev) => {
+            const newCost = calculateCost(number, prev.hasGifts);
+            return {
+                ...prev,
+                numberOfPeople: number,
+                cost: newCost, // Update the cost
+            };
+        });
         addMessageToHistory('user', `Número de Pessoas: ${number}`);
         setStep(2); // Avançar para a próxima pergunta
     };
 
     const handleGiftsClick = (hasGifts: boolean) => {
-        setEventDetails((prev) => ({
-            ...prev,
-            hasGifts,
-        }));
+        setEventDetails((prev) => {
+            const newCost = calculateCost(prev.numberOfPeople, hasGifts);
+            return {
+                ...prev,
+                hasGifts,
+                cost: newCost, // Update the cost
+            };
+        });
         addMessageToHistory('user', `Brindes: ${hasGifts ? 'Sim' : 'Não'}`);
         setStep(3); // Avançar para a próxima etapa
     };
@@ -84,6 +112,7 @@ export default function ChatComponent() {
             type: '',
             numberOfPeople: '',
             hasGifts: false,
+            cost: 0,
         });
         setStep(0);
     };
@@ -152,6 +181,7 @@ export default function ChatComponent() {
                                         <li>Tipo de Evento: Planejamento</li>
                                         <li>Número de Pessoas: {eventDetails.numberOfPeople}</li>
                                         <li>Brindes: {eventDetails.hasGifts ? 'Sim' : 'Não'}</li>
+                                        <li>Custo Estimado: R$ {eventDetails.cost.toLocaleString('pt-BR')}</li>
                                     </ul>
                                     <p>Obrigado por fornecer as informações. Se precisar de mais ajuda, estou aqui!</p>
                                 </div>
