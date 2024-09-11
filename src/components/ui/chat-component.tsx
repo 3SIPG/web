@@ -9,30 +9,24 @@ export default function ChatComponent() {
         type: '',
         numberOfPeople: '',
         hasGifts: false,
-        cost: 0, // Added cost field
+        cost: 0,
     });
     const [chatHistory, setChatHistory] = useState<Array<{ role: 'assistant' | 'user'; message: string }>>([]);
     const [assistantMessage, setAssistantMessage] = useState('');
 
-    // Calculate cost based on the number of people and whether there are gifts
+    // Calcula o custo com base no número de pessoas e se há brindes
     const calculateCost = (numberOfPeople: string, hasGifts: boolean) => {
-        const costPerPerson = 1000; // Cost per person
-        let giftCost = 0;
+        let costPerPerson = 1000; // Custo base por pessoa
+        let additionalCost = 0;
 
-        // Determine additional cost for gifts
-        if (numberOfPeople === '80') {
-            giftCost = 8000;
-        } else if (numberOfPeople === '160') {
-            giftCost = 16000;
-        } else if (numberOfPeople === '240+') {
-            giftCost = 24000;
+        if (hasGifts) {
+            additionalCost = 88000;
         }
 
-        const peopleCount = parseInt(numberOfPeople.replace(/[^0-9]/g, '')) || 0;
-        return peopleCount * costPerPerson + (hasGifts ? giftCost : 0);
+        const peopleCount = parseInt(numberOfPeople.replace(/[^0-9]/g, ''));
+        return peopleCount * costPerPerson + additionalCost;
     };
 
-    // Adiciona uma mensagem ao histórico, evitando duplicações
     const addMessageToHistory = (role: 'assistant' | 'user', message: string) => {
         setChatHistory((prev) => {
             // Evita adicionar mensagens duplicadas
@@ -56,7 +50,7 @@ export default function ChatComponent() {
     useEffect(() => {
         if (assistantMessage) {
             addMessageToHistory('assistant', assistantMessage);
-            setAssistantMessage(''); // Clear the message after adding it
+            setAssistantMessage(''); // Limpa a mensagem após adicioná-la
         }
     }, [assistantMessage]);
 
@@ -82,7 +76,7 @@ export default function ChatComponent() {
             return {
                 ...prev,
                 numberOfPeople: number,
-                cost: newCost, // Update the cost
+                cost: newCost,
             };
         });
         addMessageToHistory('user', `Número de Pessoas: ${number}`);
@@ -95,7 +89,7 @@ export default function ChatComponent() {
             return {
                 ...prev,
                 hasGifts,
-                cost: newCost, // Update the cost
+                cost: newCost,
             };
         });
         addMessageToHistory('user', `Brindes: ${hasGifts ? 'Sim' : 'Não'}`);
