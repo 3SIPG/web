@@ -13,7 +13,8 @@ export default function Aluno() {
 
   // Lista para teste porque estava dando erro no parametro works do dashscroll sem ela
   const works = [
-    { id: "1", title: "Work 1", url: "https://www.youtube.com/watch?v=towvHYnN4NI", banner: "https://www.youtube.com/watch?v=towvHYnN4NI" },
+    { id: "1", title: "Você sabe o que é amamentação cruzada?", url: "https://www.youtube.com/watch?v=towvHYnN4NI", banner: "https://eurofarmacdn.com/storage/media/15288/Shutterstock_2478102259-(1).jpg?w600,h600,q85,mSCALE,vV3.jpg" },
+    { id: "2", title: "Mês do Cliente: Estratégias para atrair o público e aumentar as vendas nas farmácias", url: "https://www.youtube.com/watch?v=towvHYnN4NI", banner: "https://eurofarmacdn.com/storage/media/15284/thumb_600x354_site_artigo_mes_do_cliente_ago_2024_papo_de_farmacia.png?w600,h600,q85,mSCALE,vV3.jpg" },
   ];
 
   return (
@@ -22,17 +23,13 @@ export default function Aluno() {
       <div>
         <Navbar />
       </div>
-
-      <div className="flex-1 overflow-x-hidden">
-
-        <div className="flex justify-center p-4">
+      <div className="flex-1 overflow-x-hidden mt-[5rem]">
+        <div className="flex justify-center p-4 mr-[10rem]">
           <DashCarousel />
         </div>
-
         <div className="flex flex-col w-full py-2 pl-6">
-
           <h1 className="text-[24px] text-euro-text-400">
-            Recent videos
+            Noticias Recentes
           </h1>
           <div className="mr-[2rem]">
             <DashScroll works={works} />
