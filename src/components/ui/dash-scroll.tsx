@@ -23,14 +23,12 @@ export function DashScroll({ works }: DashScrollProps) {
               <img
                 src={video.banner}
                 alt={video.title}
-                className="aspect-[4/3] h-fit w-fit object-cover"
-                width={300}
-                height={400}
+                className="aspect-[4/3] object-cover w-[200px] h-[200px]"
               />
             </div>
             <figcaption className="pt-2 text-xs text-muted-foreground">
-              Vídeo sobre{" "}
-              <span className="font-semibold text-foreground">
+              Noticia sobre{" "}
+              <span className="font-semibold text-foreground h-[30px]">
                 {video.title}
               </span>
             </figcaption>
