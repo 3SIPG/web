@@ -13,7 +13,7 @@ export default async function videoId({ params } : { params: { videoId : string,
             <div>
             <Navbar/>
             </div>
-            <div className="absolute left-[36rem] top-[5rem]">
+            <div className="absolute left-[15rem] top-[5rem]">
             <Breadcrumb>
             <BreadcrumbList>
             <BreadcrumbItem>
@@ -23,8 +23,11 @@ export default async function videoId({ params } : { params: { videoId : string,
             <BreadcrumbItem>{params.videoId}</BreadcrumbItem>
             </BreadcrumbList>
             </Breadcrumb>
-            <h1>{video.title}</h1>
-            <iframe src={video.url} width={360} height={360} />
+            </div>
+            <div className="absolute left-[20rem] top-[7.5rem]">
+            <h1 className="mr-[2rem]">{video.title}</h1>
+            <iframe src={video.url} width={800} height={400} />
+            <div className="flex flex-row justify-between gap-[2rem] mt-2">
             <PrevButton params={{
                     videoId: params.videoId,
                     trainingId: params.trainingId
@@ -33,6 +36,7 @@ export default async function videoId({ params } : { params: { videoId : string,
                     videoId: params.videoId,
                     trainingId: params.trainingId
                 }}/>
+            </div>
             </div>
         </main>
     )

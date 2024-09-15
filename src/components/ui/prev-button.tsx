@@ -9,6 +9,6 @@ export default function PrevButton({ params } : { params: { videoId : string, tr
     router.push(`http://localhost:3000/onboarding/${params.trainingId}/${parseInt(params.videoId, 10) - 1}`)
     }
     return (
-        <Button onClick={nextVideo}>Prev</Button>
+        <Button className="bg-euro-primary-300 hover:bg-euro-primary-400" onClick={nextVideo}>Prev</Button>
     )
 }

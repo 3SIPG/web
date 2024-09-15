@@ -30,9 +30,7 @@ export function OnboardingScroll({ works, selectedCategoryId }: OnboardingScroll
                 <img
                   src={video.banner}
                   alt={video.title}
-                  className="aspect-[4/3] h-fit w-fit object-cover"
-                  width={300}
-                  height={400}
+                  className="aspect-[4/3] object-cover w-[300px] h-[300px]"
                 />
               </div>
               <figcaption className="pt-2 text-xs text-muted-foreground">
