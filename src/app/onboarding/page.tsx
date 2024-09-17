@@ -1,5 +1,4 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import SelectOnboarding from "@/components/ui/select-onboarding";
 import Navbar from "@/components/ui/navbar";
 import { Metadata } from "next";
 
@@ -16,7 +15,6 @@ export default function Onboarding() {
     <main className="flex flex-row h-screen">
       <Navbar />
       <ScrollArea className="p-4 w-[100%] mt-4">
-        <SelectOnboarding />
       </ScrollArea>
     </main>
   );
