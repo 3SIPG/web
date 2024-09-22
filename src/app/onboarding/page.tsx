@@ -15,6 +15,7 @@ export default function Onboarding() {
     <main className="flex flex-row h-screen">
       <Navbar />
       <ScrollArea className="p-4 w-[100%] mt-4">
+        
       </ScrollArea>
     </main>
   );
