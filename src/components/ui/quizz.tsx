@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Question {
   question: string;
@@ -46,7 +47,10 @@ export default function Quizz({
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
   };
-
+  const router = useRouter();
+  function handleExitQuizz() {
+    router.push('/onboarding')
+  }
   return (
     <div className="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-4">
       {showScore ? (
@@ -54,6 +58,7 @@ export default function Quizz({
           <h2 className="text-2xl font-bold text-gray-800">
             Você acertou {score} de {questions.length} perguntas!
           </h2>
+          <button className="border rounded-md p-4 bg-euro-primary-300 hover:bg-euro-primary-400 text-white w-[100px] text-center" onClick={handleExitQuizz}>Voltar</button>
         </div>
       ) : (
         <div>
