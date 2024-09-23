@@ -17,39 +17,44 @@ export function DashCarousel() {
     title: string;
     description: string;
     link: string;
-    backgroundImage: string;  // Nova propriedade para a imagem de fundo
+    backgroundImage: string;  
+    textColor: "white" | "blue" | "black";
   }
 
   const items: DashProps[] = [
     {
       title: "Quizz 1 - LGPD",
       description: "Venha ver nosso primeiro Quizz sobre LGPD!",
-      link: "/",
+      link: "/onboarding/lgpd/quizz1",
       backgroundImage: "/assets/quizz.png", 
+      textColor: "white",
     },
     {
-      title: "Training",
-      description: "Team training sessions",
-      link: "/training",
-      backgroundImage: "assets/quizz2.png",
-    },
-    {
-      title: "Projects",
-      description: "Overview of ongoing projects",
-      link: "/projects",
-      backgroundImage: "/path-to-image3.jpg",
-    },
-    {
-      title: "Support",
-      description: "Get support for your issues",
-      link: "/support",
-      backgroundImage: "/path-to-image4.jpg",
+      title: "Quizz 1 - RH",
+      description: "Venha conferir o nosso Quizz sobre perguntas de RH!",
+      link: "/onboarding/rh/quizz1",
+      backgroundImage: "/assets/quizz2.png",
+      textColor: "black",
     },
   ];
 
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
+
+  // Função para mapear a cor do texto
+  const getTextColorClass = (color: "white" | "blue" | "black") => {
+    switch (color) {
+      case "white":
+        return "text-white";
+      case "blue":
+        return "text-blue-500";
+      case "black":
+        return "text-black";
+      default:
+        return "text-white"; // valor padrão
+    }
+  };
 
   return (
     <Carousel
@@ -71,12 +76,14 @@ export function DashCarousel() {
                     backgroundPosition: "center",
                   }}
                 >
-                  <span className="text-4xl font-semibold text-white">
+                  <span className={`text-4xl font-semibold ${getTextColorClass(item.textColor)}`}>
                     {item.title}
                   </span>
-                  <p className="mt-2 text-white">{item.description}.</p>
+                  <p className={`mt-2 ${getTextColorClass(item.textColor)}`}>
+                    {item.description}
+                  </p>
                   <Link href={item.link}>
-                    <p className="text-white underline">Link</p>
+                    <p className={`underline ${getTextColorClass(item.textColor)}`}>Link</p>
                   </Link>
                 </CardContent>
               </Card>
