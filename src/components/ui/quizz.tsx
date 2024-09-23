@@ -1,26 +1,25 @@
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
 
-// Definição do tipo para uma Pergunta
 interface Question {
   question: string;
   options: string[];
   correct: string;
 }
 
-// Definição das props que o componente Quizz vai receber
 interface QuizzProps {
   questions: Question[];
   title?: string;
   buttonText?: string;
-  onFinish?: (score: number) => void; // Função de callback quando o quiz terminar
+  onFinish?: (score: number) => void;
 }
 
-const Quizz: React.FC<QuizzProps> = ({ 
-  questions, 
-  title, 
-  buttonText = "Próxima Pergunta", 
-  onFinish = (score) => alert(`Você acertou ${score} perguntas!`) // Comportamento padrão
-}) => {
+export default function Quizz({
+  questions,
+  title,
+  buttonText = "Próxima Pergunta",
+  onFinish = (score) => alert(`Você acertou ${score} perguntas!`),
+}: QuizzProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -80,15 +79,14 @@ const Quizz: React.FC<QuizzProps> = ({
       )}
     </div>
   );
-};
+}
 
-// Componentes auxiliares
 interface QuizzQuestionProps {
   children: React.ReactNode;
   index: number;
 }
 
-const QuizzQuestion: React.FC<QuizzQuestionProps> = ({ children, index }) => {
+function QuizzQuestion({ children, index }: QuizzQuestionProps) {
   return (
     <div className="mb-4">
       <h3 className="text-xl font-semibold text-gray-800">
@@ -96,15 +94,15 @@ const QuizzQuestion: React.FC<QuizzQuestionProps> = ({ children, index }) => {
       </h3>
     </div>
   );
-};
+}
 
 interface QuizzOptionsProps {
   children: React.ReactNode;
 }
 
-const QuizzOptions: React.FC<QuizzOptionsProps> = ({ children }) => {
+function QuizzOptions({ children }: QuizzOptionsProps) {
   return <div className="space-y-2">{children}</div>;
-};
+}
 
 interface QuizzOptionProps {
   children: React.ReactNode;
@@ -112,7 +110,7 @@ interface QuizzOptionProps {
   onClick: () => void;
 }
 
-const QuizzOption: React.FC<QuizzOptionProps> = ({ children, isSelected, onClick }) => {
+function QuizzOption({ children, isSelected, onClick }: QuizzOptionProps) {
   return (
     <div
       onClick={onClick}
@@ -125,14 +123,14 @@ const QuizzOption: React.FC<QuizzOptionProps> = ({ children, isSelected, onClick
       {children}
     </div>
   );
-};
+}
 
 interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
+function Button({ onClick, children }: ButtonProps) {
   return (
     <button
       onClick={onClick}
@@ -141,6 +139,4 @@ const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
       {children}
     </button>
   );
-};
-
-export default Quizz;
+}
