@@ -1,6 +1,7 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Navbar from "@/components/ui/navbar";
 import { Metadata } from "next";
+import ScrollOnboarding from "@/components/ui/scroll-onboarding";
 
 export const metadata: Metadata = {
   title: "Onboarding | Eurofarma",
@@ -15,7 +16,8 @@ export default function Onboarding() {
     <main className="flex flex-row h-screen">
       <Navbar />
       <ScrollArea className="p-4 w-[100%] mt-4">
-        
+       <ScrollOnboarding pageCategory="LGPD"/>
+       <ScrollOnboarding pageCategory="RH"/>
       </ScrollArea>
     </main>
   );
