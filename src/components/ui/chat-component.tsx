@@ -49,10 +49,10 @@ export default function ChatComponent() {
                 setAssistantMessage('Quantas pessoas vão para o treinamento da equipe?');
                 break;
             case 'Reunião de Compliance':
-                setAssistantMessage('2');
+                setAssistantMessage('Quantas horas vai demorar a reunião de compliance?');
                 break;
             case 'Feedback de Funcionários':
-                setAssistantMessage('3');
+                setAssistantMessage('Você deseja enviar um feedback para todos os funcionários responderem?');
                 break;
             default:
                 break;
@@ -129,7 +129,7 @@ export default function ChatComponent() {
 
     const handleEmailClick = (email: boolean) => {
         setEventDetails(prev => ({ ...prev, email }));
-        addMessageToHistory('user', `${email ? '1' : '2'}`);
+        addMessageToHistory('user', `${email ? 'Sim, eu gostaria de enviar um e-mail' : 'Não, eu não preciso de e-mail.'}`);
         if (email) {
             sendEmail(eventDetails);
         }
