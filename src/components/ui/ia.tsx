@@ -50,7 +50,7 @@ export default function Ia() {
   };
 
   return (
-    <div className='flex justify-center items-center ml-44'>
+    <div className='flex justify-center items-center ml-38'>
       <Card className='grid grid-rows-[min-content_1fr_min-content] w-[70vw] h-[80vh] gap-2 flex-col p-5'>
         <CardHeader>
           <CardDescription>
@@ -69,8 +69,8 @@ export default function Ia() {
                     </p>
                   </div>
                 ) : (
-                  <div className="flex font-sans justify-start flex-row gap-4 max-w-[70vw]">
-                    <p>{message.content}</p>
+                  <div className="flex font-sans justify-start flex-row gap-4 ">
+                    <p className="max-w-[40vw] bg-neutral-200 border border-neutral-200 rounded-3xl px-5 py-2.5">{message.content}</p>
                   </div>
                 )}
               </div>
